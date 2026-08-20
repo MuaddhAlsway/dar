@@ -1,6 +1,10 @@
 function App() {
   return (
     <>
+      <img src="/img.jpeg" alt="img1" />
+      <img src="/img2.jpeg" alt="img2" />
+      <img src="/img3.jpeg" alt="img3" />
+
       <form>
         <h2>تواصل معنا</h2>
         <div>
@@ -17,6 +21,8 @@ function App() {
         </div>
         <button type="submit">إرسال</button>
       </form>
+
+      <img src="/img4.jpeg" alt="footer" />
 
       <footer></footer>
     </>
