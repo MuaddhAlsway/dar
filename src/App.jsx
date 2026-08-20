@@ -1,7 +1,7 @@
 function App() {
   return (
     <>
-      <img src="/img.jpeg" alt="img1" />
+      <img src="/img1.jpeg" alt="img1" />
       <img src="/img2.jpeg" alt="img2" />
       <img src="/img3.jpeg" alt="img3" />
 
@@ -22,7 +22,7 @@ function App() {
         <button type="submit">إرسال</button>
       </form>
 
-      <img src="/img4.jpeg" alt="footer" />
+      <img src="/footer.jpeg" alt="footer" />
 
       <footer></footer>
     </>
