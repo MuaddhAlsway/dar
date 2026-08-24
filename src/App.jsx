@@ -1,28 +1,19 @@
+import ContactForm from './components/ContactForm.jsx';
+
+/**
+ * Landing page layout:
+ * hero images -> contact form section -> footer image.
+ */
 function App() {
   return (
     <>
-      <img src="/img1.jpeg" alt="img1" />
-      <img src="/img2.jpeg" alt="img2" />
-      <img src="/img3.jpeg" alt="img3" />
+      <img src="/img1.jpeg" alt="" aria-hidden="true" />
+      <img src="/img2.jpeg" alt="" aria-hidden="true" />
+      <img src="/img3.jpeg" alt="" aria-hidden="true" />
 
-      <form>
-        <h2>تواصل معنا</h2>
-        <div>
-          <label htmlFor="name">الإسم</label>
-          <input type="text" id="name" name="name" required />
-        </div>
-        <div>
-          <label htmlFor="email">الإيميل</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-        <div>
-          <label htmlFor="phone">رقم الجوال</label>
-          <input type="tel" id="phone" name="phone" required />
-        </div>
-        <button type="submit">إرسال</button>
-      </form>
+      <ContactForm />
 
-      <img src="/footer.jpeg" alt="footer" />
+      <img src="/footer.jpeg" alt="" aria-hidden="true" />
 
       <footer></footer>
     </>

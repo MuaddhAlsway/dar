@@ -1,7 +1,18 @@
-.vercel
-.env*
+# Dependencies
 node_modules
+
+# Build output
 dist
 
+# Environment variables (never commit secrets)
+.env
+.env.*
+!.env.example
+
+# Vercel
 .vercel
-.env*
+
+# Logs / OS junk
+*.log
+.DS_Store
+Thumbs.db

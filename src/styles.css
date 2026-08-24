@@ -1,0 +1,218 @@
+/* ================================================================== */
+/* Global / base                                                       */
+/* ================================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: Arial, "Segoe UI", Tahoma, sans-serif;
+  background: #f5f5dc;
+  color: #1a1a2e;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+a img {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+/* ================================================================== */
+/* Contact section                                                     */
+/* ================================================================== */
+
+.contact {
+  width: 100%;
+  max-width: 560px;
+  margin: 24px auto;
+  padding: 32px 20px;
+  background: #fffdf5;
+  border: 1px solid #e3dfc8;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 139, 0.08);
+}
+
+.contact__title {
+  text-align: center;
+  font-size: 26px;
+  color: #00008b;
+  margin-bottom: 6px;
+}
+
+.contact__subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 22px;
+}
+
+/* Status banners ---------------------------------------------------- */
+
+.contact-banner {
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.contact-banner--success {
+  background: #e8f7ec;
+  color: #14602b;
+  border: 1px solid #9fd8ae;
+}
+
+.contact-banner--error {
+  background: #fdeaea;
+  color: #8c1c1c;
+  border: 1px solid #f0b4b4;
+}
+
+/* Form fields ------------------------------------------------------- */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-form__field label {
+  font-weight: bold;
+  color: #00008b;
+  font-size: 15px;
+}
+
+.contact-form__field input,
+.contact-form__field textarea {
+  width: 100%;
+  padding: 11px 12px;
+  font-size: 16px; /* >=16px prevents iOS zoom on focus */
+  font-family: inherit;
+  color: #1a1a2e;
+  background: #fdf6e3;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.contact-form__field input::placeholder,
+.contact-form__field textarea::placeholder {
+  color: #9b9784;
+}
+
+.contact-form__field input:focus,
+.contact-form__field textarea:focus {
+  outline: none;
+  border-color: #00008b;
+  box-shadow: 0 0 0 3px rgba(0, 0, 139, 0.18);
+}
+
+.contact-form__field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Invalid state + error text ---------------------------------------- */
+
+.contact-form__field .is-invalid {
+  border-color: #c0392b;
+  background: #fdf1ef;
+}
+
+.contact-form__field .is-invalid:focus {
+  border-color: #c0392b;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.18);
+}
+
+.contact-form__error {
+  font-size: 13px;
+  color: #c0392b;
+  font-weight: bold;
+}
+
+/* Submit button ------------------------------------------------------ */
+
+.contact-form__submit {
+  padding: 13px;
+  font-size: 16px;
+  font-weight: bold;
+  background: #00008b;
+  color: #fff;
+  border: 1px solid #00005c;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+}
+
+.contact-form__submit:hover:not(:disabled) {
+  background: #000060;
+}
+
+.contact-form__submit:active:not(:disabled) {
+  transform: scale(0.985);
+}
+
+.contact-form__submit:focus-visible {
+  outline: 3px solid #ffb400;
+  outline-offset: 2px;
+}
+
+.contact-form__submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ================================================================== */
+/* Responsive tweaks                                                   */
+/* ================================================================== */
+
+@media (max-width: 480px) {
+  .contact {
+    margin: 16px auto;
+    padding: 24px 14px;
+    border-radius: 10px;
+  }
+
+  .contact__title {
+    font-size: 22px;
+  }
+}
