@@ -30,8 +30,7 @@ const LIMITS = {
   EMAIL_MAX: 254,
   PHONE_MAX: 30,
   PHONE_MIN_DIGITS: 7,
-  MESSAGE_MIN: 10,
-  MESSAGE_MAX: 5000,
+  MESSAGE_MAX: 5000, // message is optional; capped only when supplied
 };
 
 /**
@@ -155,13 +154,10 @@ function validateFields(fields) {
     errors.phone = 'A valid phone number is required.';
   }
 
-  if (!message) {
-    errors.message = 'Message is required.';
-  } else if (
-    message.length < LIMITS.MESSAGE_MIN ||
-    message.length > LIMITS.MESSAGE_MAX
-  ) {
-    errors.message = `Message must be between ${LIMITS.MESSAGE_MIN} and ${LIMITS.MESSAGE_MAX} characters.`;
+  /* Message is optional (removed from the form) - only enforce the cap
+     when a value is actually supplied. */
+  if (message && message.length > LIMITS.MESSAGE_MAX) {
+    errors.message = `Message must not exceed ${LIMITS.MESSAGE_MAX} characters.`;
   }
 
   return errors;
@@ -229,7 +225,7 @@ function buildEmailContent({ name, email, phone, message }, senderIp) {
     'New Contact Form Submission\n' +
     '----------------------------------------\n' +
     rows.map(([label, value]) => `${label}: ${value}`).join('\n') +
-    `\nMessage:\n${message}\n`;
+    (message ? `\nMessage:\n${message}\n` : '\n');
 
   const htmlRows = rows
     .map(
@@ -241,19 +237,24 @@ function buildEmailContent({ name, email, phone, message }, senderIp) {
     )
     .join('');
 
+  /* Message section is rendered only when the visitor supplied one. */
+  const messageHtmlRow = message
+    ? `
+        <tr>
+          <td colspan="2" style="padding:8px 12px;">
+            <strong>Message:</strong>
+            <div style="margin-top:8px;padding:12px;background:#faf9f4;border-left:3px solid #00008b;white-space:pre-wrap;line-height:1.6;">${escapeHtml(message)}</div>
+          </td>
+        </tr>`
+    : '';
+
   const html = `
     <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;border:1px solid #e0ddcf;border-radius:8px;overflow:hidden;">
       <div style="background:#00008b;color:#ffffff;padding:16px 24px;">
         <h2 style="margin:0;font-size:18px;">New Contact Form Submission</h2>
       </div>
       <table style="width:100%;border-collapse:collapse;font-size:14px;color:#222222;">
-        ${htmlRows}
-        <tr>
-          <td colspan="2" style="padding:8px 12px;">
-            <strong>Message:</strong>
-            <div style="margin-top:8px;padding:12px;background:#faf9f4;border-left:3px solid #00008b;white-space:pre-wrap;line-height:1.6;">${escapeHtml(message)}</div>
-          </td>
-        </tr>
+        ${htmlRows}${messageHtmlRow}
       </table>
     </div>`;
 

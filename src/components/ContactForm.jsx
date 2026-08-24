@@ -17,8 +17,6 @@ const PHONE_REGEX = /^[+()\-.\s\d]+$/;
 const LIMITS = {
   nameMin: 2,
   nameMax: 100,
-  messageMin: 10,
-  messageMax: 5000,
 };
 
 /**
@@ -47,12 +45,6 @@ function validateField(field, rawValue) {
         return 'صيغة رقم الجوال غير صحيحة.';
       return '';
     }
-
-    case 'message':
-      if (!value) return 'يرجى كتابة رسالتك.';
-      if (value.length < LIMITS.messageMin || value.length > LIMITS.messageMax)
-        return `الرسالة يجب أن تكون بين ${LIMITS.messageMin} و ${LIMITS.messageMax} حرفًا.`;
-      return '';
 
     default:
       return '';
@@ -130,7 +122,6 @@ export default function ContactForm() {
           name: values.name.trim(),
           email: values.email.trim(),
           phone: values.phone.trim(),
-          message: values.message.trim(),
         }),
       });
 
@@ -265,33 +256,6 @@ export default function ContactForm() {
           {errors.phone && (
             <p className="contact-form__error" id="contact-phone-error">
               {errors.phone}
-            </p>
-          )}
-        </div>
-
-        {/* Message */}
-        <div className="contact-form__field">
-          <label htmlFor="contact-message">رسالتك</label>
-          <textarea
-            id="contact-message"
-            name="message"
-            rows={5}
-            placeholder="اكتب رسالتك هنا..."
-            maxLength={LIMITS.messageMax + 1}
-            value={values.message}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            disabled={isSending}
-            aria-required="true"
-            aria-invalid={Boolean(errors.message)}
-            aria-describedby={
-              errors.message ? 'contact-message-error' : undefined
-            }
-            className={errors.message ? 'is-invalid' : ''}
-          />
-          {errors.message && (
-            <p className="contact-form__error" id="contact-message-error">
-              {errors.message}
             </p>
           )}
         </div>
