@@ -11,9 +11,11 @@ function App() {
       <img src="/img2.jpeg" alt="" aria-hidden="true" />
       <img src="/img3.jpeg" alt="" aria-hidden="true" />
 
-      <img src="/footer.jpeg" alt="" aria-hidden="true" />
+      <img src="/upperform.png" alt="" aria-hidden="true" />
 
       <ContactForm />
+
+      <img src="/lowerform.png" alt="" aria-hidden="true" />
 
       <footer></footer>
     </>
