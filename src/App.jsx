@@ -9,7 +9,7 @@ function App() {
     <>
       <img src="/img1.jpeg" alt="" aria-hidden="true" />
       <img src="/img2.jpeg" alt="" aria-hidden="true" />
-      <img src="/img3.jpeg" alt="" aria-hidden="true" />
+      <img src="/img3.png" alt="" aria-hidden="true" />
 
       <img src="/upperform.png" alt="" aria-hidden="true" />
 
